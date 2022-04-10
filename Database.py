@@ -17,6 +17,8 @@ class Database():
     except sqlalchemy.exc.OperationalError as e:
       if "2005" in str(e):
         raise HostError(self.host)
+      elif "2002" in str(e):
+        raise InvaildPort(self.host)
       elif "1045" in str(e):
         raise Invaildlogin(self.user,self.password)
       elif "1049" in str(e):
@@ -37,7 +39,7 @@ class Database():
       pass
     return 1
 
-db = Database("127.0.0.1:33061","test","test","test")
+db = Database("127.0.0.1:3306","test","test","test")
 file = File("by-ethnicity-table.csv")
 
 db.convert_excel_to_db(db,file)

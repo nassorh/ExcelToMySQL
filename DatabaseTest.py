@@ -4,7 +4,7 @@ from File import *
 class TestDatabase(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.host = "localhost"
+        cls.host = "127.0.0.1:3306"
         cls.user = "test"
         cls.password = "test"
         cls.database = "test"
@@ -21,7 +21,14 @@ class TestDatabase(unittest.TestCase):
         
         db = Database(invaild_host,self.user,self.password,self.database)
         self.assertRaises(HostError,Database.convert_excel_to_db,db,self.file)
+    
+    def test_invaild_port(self) -> None:
+        invaild_host = "127.0.0.1:33361"
+        print("Invaild Host Test: {}".format(invaild_host))
         
+        db = Database(invaild_host,self.user,self.password,self.database)
+        self.assertRaises(InvaildPort,Database.convert_excel_to_db,db,self.file)
+
     def test_invaild_user(self) -> None:
         invaild_user = "invaild_user"
         print("Invaild User Test: {}".format(invaild_user))
