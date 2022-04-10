@@ -1,4 +1,5 @@
 from Database import *
+import File
 
 def get_host_user_pass_database():
     host = input("Enter the database url: ")
@@ -13,8 +14,10 @@ def main():
 
       try:
         host,user,password,database = get_host_user_pass_database()
-        Database.convert_excel_to_db(host,user,password,database)
-
+        db = Database(host,user,password,database)
+        file = File("by-ethnicity-table.csv")
+        Database.convert_excel_to_db(db,file)
+        
       except ValueError as e:
         print(e)
         continue

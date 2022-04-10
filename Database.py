@@ -32,10 +32,9 @@ class Database():
     self.mydb.close()
 
   @classmethod
-  def convert_excel_to_db(cls,host,user,password,database):
-    with cls(host,user,password,database) as db:
+  def convert_excel_to_db(cls,database,file):
+    with database as db:
             # print(db)
             pass
     return 1
 
-Database.convert_excel_to_db("localhost","test","test","test")
