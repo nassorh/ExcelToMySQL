@@ -27,7 +27,8 @@ def main():
         host,user,password,database = get_host_user_pass_database()
         db = Database(host,user,password,database)
         file = get_file()
-        rows_affected = Database.convert_excel_to_db(db,file)
+        table_name = input("Enter name of table you wish to create: ")
+        rows_affected = Database.convert_excel_to_db(table_name,file)
         print("Rows changed {}".format(rows_affected))
 
       except ValueError as e:
