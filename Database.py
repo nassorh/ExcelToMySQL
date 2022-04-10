@@ -36,9 +36,6 @@ class Database():
   @classmethod
   def convert_excel_to_db(cls,db,file):
     with db as conn:
-      file.dataFrame.to_sql(db.database, conn,if_exists='replace')
-    return 1
+      rows_affected = file.dataFrame.to_sql(db.database, conn,if_exists='replace')
+    return rows_affected
 
-db = Database("127.0.0.1:3306","test","test","test")
-file = File("by-ethnicity-table.csv")
-db.convert_excel_to_db(db,file)
