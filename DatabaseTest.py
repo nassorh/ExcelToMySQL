@@ -12,8 +12,8 @@ class TestDatabase(unittest.TestCase):
 
     def test_valid_test(self):
         print("Vaild Test")
-        db = Database("localhost",self.user,self.password,self.database)
-        self.assertEqual(db.host,"localhost")
+        db = Database(self.host,self.user,self.password,self.database)
+        Database.convert_excel_to_db(db,self.file)
 
     def test_invaild_host(self) -> None:
         invaild_host = "invaild_host"
