@@ -1,5 +1,7 @@
-import mysql.connector
+from msilib.schema import Error
+import sqlalchemy
 from ErrorHandling import *
+from File import *
 
 class Database():
   def __init__ (self,host,user,password,database):
@@ -9,32 +11,34 @@ class Database():
     self.database = database 
   
   def __enter__(self) -> object:
-    # print("Connecting...")
+    print("Connecting...")
     try:
-      self.mydb = mysql.connector.connect(
-        host=self.host,
-        user=self.user,
-        password=self.password,
-        database=self.database
-      )
-      self.conn = self.mydb.cursor()
-    except mysql.connector.errors.InterfaceError:
-      raise HostError(self.host)
-    except mysql.connector.ProgrammingError as e:
-      if "database" in str(e):
+      self.engine = sqlalchemy.create_engine('mysql://{}:{}@{}/{}'.format(self.user,self.password,self.host,self.database))
+      self.conn = self.engine.connect()
+    except sqlalchemy.exc.OperationalError as e:
+      if "2005" in str(e):
+        raise HostError(self.host)
+      elif "1045" in str(e):
+        raise Invaildlogin(self.user,self.password)
+      elif "1049" in str(e):
         raise DatabaseError(self.database)
       else:
-        raise Invaildlogin(self.host,self.password)
-    # print("Connected")
+        print(e)
+        raise ValueError()
+    
+    print("Connected")
     return self.conn
   
   def __exit__(self, exception_type, exception_value, traceback):
-    self.mydb.close()
+    self.conn.close()
 
   @classmethod
   def convert_excel_to_db(cls,database,file):
     with database as db:
-            # print(db)
-            pass
+      pass
     return 1
 
+db = Database("127.0.0.1:33061","test","test","test")
+file = File("by-ethnicity-table.csv")
+
+db.convert_excel_to_db(db,file)
