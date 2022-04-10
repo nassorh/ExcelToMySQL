@@ -34,8 +34,8 @@ class Database():
     self.conn.close()
 
   @classmethod
-  def convert_excel_to_db(cls,db,file):
+  def convert_excel_to_db(cls,db,table_name,file):
     with db as conn:
-      rows_affected = file.dataFrame.to_sql(db.database, conn,if_exists='replace')
+      rows_affected = file.dataFrame.to_sql(table_name, conn,if_exists='replace')
     return rows_affected
 
