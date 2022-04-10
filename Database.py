@@ -1,4 +1,3 @@
-from msilib.schema import Error
 import sqlalchemy
 from ErrorHandling import *
 from File import *
