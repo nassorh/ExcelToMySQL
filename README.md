@@ -2,7 +2,7 @@
 ## How To Run The Code
 ```bash
 # Clone this repository
-git clone https://github.com/nassorh/Text-Similarity.git
+git clone https://github.com/nassorh/ExcelToMySQL.git
 
 # Install dependencies
 $ pip install -r requirments.txt
