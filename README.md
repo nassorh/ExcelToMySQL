@@ -18,6 +18,7 @@ Enter the database url: localhost/{IP address of DB}
 Enter the database username: {Username of DB login}
 Enter the database password: {Password of DB login}
 Enter the database name: {Name of DB Scehma}
-Enter name of table you wish to create: {Name of the table you wish to create}
-Do you wish to convert another file[Y/N]: {Enter Y to conver another excel final/Enter N to leave the application}
+Enter file directory: {Directory of the file you wish to create make sure to include .csv}
+Enter the name of the table you wish to create: {Name of the table you wish to create}
+Do you wish to convert another file[Y/N]: {Enter Y to convert another excel final/Enter N to leave the application}
 ```
