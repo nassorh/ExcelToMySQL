@@ -17,6 +17,7 @@ yarn-error.log*
 
 # Compiled binary addons (if used)
 build/
+dist/
 
 # Coverage directory (if you generate code coverage reports)
 coverage/

@@ -1,8 +1,13 @@
 module.exports = {
     // Test Excel file path
-    excelFilePath: './by-ethnicity-table.csv',
+    cleanCsvFilePath: './tests/data/clean_table.csv',
+    csvFileWithMissingDataPath: './tests/data/missing_data.csv',
+    csvFileWithMissingHeaderPath: './tests/data/missing_header.csv',
   
     // Path to the ParseExcelData module
-    parseExcelDataPath: './src/Adatpers/ParseExcelData',
+    parseExcelDataPath: './dist/Adatpers/ExcelParser/ParseExcelData',
+    parseExcelReaderPath: './dist/ExternalService/ExcelReaders/XLSXReader',
+
+    excelDataPath: './dist/Entites/CSVData',    
   };
   
