@@ -8,6 +8,10 @@ class CSVData implements IExcelData {
     constructor(){
     }
 
+    getData() : any[]{
+        return this.data;
+    }
+    
     getColumns() : any[]{
         return this.columns
     }
