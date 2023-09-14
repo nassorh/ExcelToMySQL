@@ -17,11 +17,13 @@ class ParseExcelData implements IExcelParser {
         
         const sheetName = this.excelReader.getSheetName()
         const columns = this.excelReader.getColumns()
+        const columns_datatypes = this.excelReader.getColumnsDataType()
         const data = this.excelReader.readExcel()
         
         this.excelData.filename = sheetName;
         this.excelData.setData(data);
         this.excelData.setColumns(columns);
+        this.excelData.setColumnsDatatypes(columns_datatypes);
         return this.excelData;
       } catch (error) {
         throw new Error(`Error parsing Excel data: ${error.message}`);
