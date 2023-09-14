@@ -3,6 +3,7 @@ interface IExcelReader{
     readExcel(): any[]
     getSheetName(): String
     getColumns(): any[]
+    getColumnsDataType(): [string, string][]
 }
 
 export default IExcelReader;

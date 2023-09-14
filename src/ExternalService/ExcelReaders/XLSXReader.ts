@@ -46,6 +46,42 @@ class XLSXReader implements IExcelReader{
 
         return columnNames;
     }
+
+    getColumnsDataType(): [string, string][]{
+        const sheetName = this.workbook.SheetNames[0];
+        const worksheet = this.workbook.Sheets[sheetName];
+
+        const columnInfo = [];
+        const range = XLSX.utils.decode_range(worksheet['!ref']);
+        for (let C = range.s.c; C <= range.e.c; ++C) {
+            const cellAddress = { c: C, r: range.s.r }; // Assuming headers are in the first row
+            const cellRef = XLSX.utils.encode_cell(cellAddress);
+            const cell = worksheet[cellRef];
+
+            try {
+                const columnName = cell.v; // `cell.v` contains the value of the header cell
+
+                // Determine the datatype by examining the data in the column
+                let cellDatatype = "unknown"; // Default to unknown
+                for (let R = range.s.r + 1; R <= range.e.r; ++R) {
+                    const dataCellAddress = { c: C, r: R };
+                    const dataCellRef = XLSX.utils.encode_cell(dataCellAddress);
+                    const dataCell = worksheet[dataCellRef];
+                    cellDatatype = typeof dataCell.v;
+                    if (cellDatatype == 'string'){
+                        cellDatatype = "VARCHAR(255)"
+                    }else if (cellDatatype == 'number'){
+                        cellDatatype ="INT"
+                    }
+                }
+
+                columnInfo.push([columnName, cellDatatype]);
+            } catch (error) {
+                throw new Error(`Error parsing Excel data: Undefined Header`);
+            }
+        }
+        return columnInfo;
+    }
 }
 
 export default XLSXReader;
