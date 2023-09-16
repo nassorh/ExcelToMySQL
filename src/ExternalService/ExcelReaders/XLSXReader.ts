@@ -62,7 +62,7 @@ class XLSXReader implements IExcelReader{
                 const columnName = cell.v; // `cell.v` contains the value of the header cell
 
                 // Determine the datatype by examining the data in the column
-                let cellDatatype = "unknown"; // Default to unknown
+                let cellDatatype = null; // Default to null
                 for (let R = range.s.r + 1; R <= range.e.r; ++R) {
                     const dataCellAddress = { c: C, r: R };
                     const dataCellRef = XLSX.utils.encode_cell(dataCellAddress);
