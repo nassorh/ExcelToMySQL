@@ -43,7 +43,7 @@ class CSVData implements IExcelData {
 
     validateColumnDatatypes(columnDatatypes: [string, string][]): boolean {
         for (const [columnName, dataType] of columnDatatypes) {
-            if (!this.isValidColumnName(columnName) || !this.isValidDataType(dataType)) {
+            if (!this.isValidDataType(dataType)) {
                 throw new Error("Invalid Column Data Type")
             }
         }
