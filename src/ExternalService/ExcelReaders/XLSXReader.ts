@@ -67,11 +67,19 @@ class XLSXReader implements IExcelReader{
                     const dataCellAddress = { c: C, r: R };
                     const dataCellRef = XLSX.utils.encode_cell(dataCellAddress);
                     const dataCell = worksheet[dataCellRef];
-                    cellDatatype = typeof dataCell.v;
-                    if (cellDatatype == 'string'){
-                        cellDatatype = "VARCHAR(255)"
-                    }else if (cellDatatype == 'number'){
-                        cellDatatype ="INT"
+                    
+                    //Handle empty cells
+                    if(dataCell){
+                        cellDatatype = typeof dataCell.v;
+                    }
+
+                    if (cellDatatype == 'string') {
+                        cellDatatype = "VARCHAR(255)";
+                        break;
+                    }
+                    else if (cellDatatype == 'number') {
+                        cellDatatype = "INT";
+                        break;
                     }
                 }
 
