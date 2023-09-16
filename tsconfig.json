@@ -4,6 +4,6 @@
       "module": "CommonJS",
       "outDir": "./dist"
     },
-    "include": ["src/**/*.ts"]
+    "include": ["src/**/*.ts","bin/**/*.ts"]
   }
   
