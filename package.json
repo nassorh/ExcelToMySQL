@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "chai": "^4.3.8",
+    "mocha": "^10.2.0"
+  },
+  "scripts": {
+    "cli": "node ./dist/bin/excel-to-sql-cli.js",
+    "test": "mocha"
+  }
+}

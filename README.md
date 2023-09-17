@@ -1,24 +1,18 @@
 # ExcelToMySQL
-## How To Run The Code
+ExcelToMySQL is a command-line tool that simplifies the process of converting data from Excel files (XLSX) into MySQL database tables. This tool is designed to streamline the migration of structured data from Excel spreadsheets into a MySQL database, making it easier for users to work with their data in a database environment.
+
+Please ensure that your Excel data is saved in CSV format before using this tool for optimal compatibility.
+
+## Features
+- Convert Excel data into MySQL statments
+- Automatically infer data types based on the content of Excel columns.
+- Handle empty cells gracefully.
+- Command-line interface.
+
+## Usage/Examples
 ```bash
-# Clone this repository
-git clone https://github.com/nassorh/ExcelToMySQL.git
-
-# Install dependencies
-$ pip install -r requirments.txt
-
-# Run the app
-$ python Main.py
+npm run cli <csvFile>
 ```
-Note: If running from the terminal does not work feel free to run Main.py from an IDE.
 
-## How The Application Works
-```bash
-Enter the database url: localhost/{IP address of DB}
-Enter the database username: {Username of DB login}
-Enter the database password: {Password of DB login}
-Enter the database name: {Name of DB Scehma}
-Enter file directory: {Directory of the file you wish to create make sure to include .csv}
-Enter the name of the table you wish to create: {Name of the table you wish to create}
-Do you wish to convert another file[Y/N]: {Enter Y to convert another excel final/Enter N to leave the application}
-```
+## Contributing
+Contributions are welcome! Feel free to open issues, submit pull requests, or suggest enhancements.
